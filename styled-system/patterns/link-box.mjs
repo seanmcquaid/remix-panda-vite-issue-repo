@@ -1,19 +1,21 @@
-import { mapObject } from '../helpers.mjs';
-import { css } from '../css/index.mjs';
+import { mapObject } from "../helpers.mjs";
+import { css } from "../css/index.mjs";
 
 const linkBoxConfig = {
-transform(props) {
-  return {
-    position: "relative",
-    "& :where(a, abbr)": {
+  transform(props) {
+    return {
       position: "relative",
-      zIndex: "1"
-    },
-    ...props
-  };
-}}
+      "& :where(a, abbr)": {
+        position: "relative",
+        zIndex: "1",
+      },
+      ...props,
+    };
+  },
+};
 
-export const getLinkBoxStyle = (styles = {}) => linkBoxConfig.transform(styles, { map: mapObject })
+export const getLinkBoxStyle = (styles = {}) =>
+  linkBoxConfig.transform(styles, { map: mapObject });
 
-export const linkBox = (styles) => css(getLinkBoxStyle(styles))
-linkBox.raw = getLinkBoxStyle
+export const linkBox = (styles) => css(getLinkBoxStyle(styles));
+linkBox.raw = getLinkBoxStyle;

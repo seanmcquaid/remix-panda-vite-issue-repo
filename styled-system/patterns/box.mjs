@@ -1,12 +1,14 @@
-import { mapObject } from '../helpers.mjs';
-import { css } from '../css/index.mjs';
+import { mapObject } from "../helpers.mjs";
+import { css } from "../css/index.mjs";
 
 const boxConfig = {
-transform(props) {
-  return props;
-}}
+  transform(props) {
+    return props;
+  },
+};
 
-export const getBoxStyle = (styles = {}) => boxConfig.transform(styles, { map: mapObject })
+export const getBoxStyle = (styles = {}) =>
+  boxConfig.transform(styles, { map: mapObject });
 
-export const box = (styles) => css(getBoxStyle(styles))
-box.raw = getBoxStyle
+export const box = (styles) => css(getBoxStyle(styles));
+box.raw = getBoxStyle;

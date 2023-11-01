@@ -8,20 +8,20 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-const Header = styled('h1', {
+const Header = styled("h1", {
   base: {
-    color: 'blue',
-    backgroundColor: 'white',
+    color: "blue",
+    backgroundColor: "white",
   },
   variants: {
     variant: {
       error: {
-        color: 'red',
-        backgroundColor: 'black',
-      }
-    }
-  }
-})
+        color: "red",
+        backgroundColor: "black",
+      },
+    },
+  },
+});
 
 export default function Index() {
   return (
