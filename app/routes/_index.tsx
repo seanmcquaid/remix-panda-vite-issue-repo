@@ -14,6 +14,11 @@ const Header = styled("h1", {
     backgroundColor: "primary",
   },
   variants: {
+    isError: {
+      true: {
+        color: 'primary'
+      }
+    },
     variant: {
       error: {
         color: "primary",
@@ -26,7 +31,7 @@ const Header = styled("h1", {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <Header variant="e">Welcome to Remix</Header>
+      <Header variant="error" isError>Welcome to Remix</Header>
       <ul>
         <li>
           <a
