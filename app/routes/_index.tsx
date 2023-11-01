@@ -10,14 +10,14 @@ export const meta: MetaFunction = () => {
 
 const Header = styled("h1", {
   base: {
-    color: "blue",
-    backgroundColor: "white",
+    color: "secondary",
+    backgroundColor: "primary",
   },
   variants: {
     variant: {
       error: {
-        color: "red",
-        backgroundColor: "black",
+        color: "primary",
+        backgroundColor: "secondary",
       },
     },
   },
@@ -26,7 +26,7 @@ const Header = styled("h1", {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <Header>Welcome to Remix</Header>
+      <Header variant="e">Welcome to Remix</Header>
       <ul>
         <li>
           <a
