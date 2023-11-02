@@ -1,5 +1,9 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useTranslation } from "react-i18next";
 import { styled } from "styled-system/jsx";
+import { useAppDispatch, useAppSelector } from "~/store";
+import { selectCounterValue } from "~/store/counter/selectors";
+import { increment } from "~/store/counter/slice";
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,8 +20,8 @@ const Header = styled("h1", {
   variants: {
     isError: {
       true: {
-        color: 'primary'
-      }
+        color: "primary",
+      },
     },
     variant: {
       error: {
@@ -29,34 +33,17 @@ const Header = styled("h1", {
 });
 
 export default function Index() {
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(selectCounterValue);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <Header variant="error" isError>Welcome to Remix</Header>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+      <Header variant="error" isError>
+        {t("HomePage.title")}
+      </Header>
+      <div>Count {count}</div>
+      <button onClick={() => dispatch(increment())}>Increment</button>
     </div>
   );
 }
