@@ -32,4 +32,6 @@ export default defineConfig({
   },
   // The JSX framework to use
   jsxFramework: "react",
+
+  "gitignore": true
 });
