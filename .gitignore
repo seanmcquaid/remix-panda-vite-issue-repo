@@ -5,4 +5,4 @@ node_modules
 /public/build
 .env
 
-/styled-system
+styled-system
