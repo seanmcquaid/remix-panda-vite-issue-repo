@@ -16,7 +16,7 @@ export const meta: MetaFunction = () => {
 const Header = styled.h1<{
   $isError?: boolean;
 }>`
-  color: ${({ $isError }) => ($isError ? "red" : "blue")};
+  color: ${({ $isError, theme }) => ($isError ?  theme.colors.primary : theme.colors.secondary)};
 `;
 
 export default function Index() {

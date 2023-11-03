@@ -21,7 +21,13 @@ export default function App() {
         {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
       <body>
-        <ThemeProvider theme={{}}>
+        <ThemeProvider theme={{
+          colors: {
+            primary: "#ff0000",
+            secondary: "#00ff00",
+            tertiary: "#0000ff",
+          },
+        }}>
           <ReduxProvider>
             <Outlet />
           </ReduxProvider>

@@ -11,7 +11,7 @@ export default function Boundary() {
 }
 
 const Header = styled.h1`
-  color: green;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export function ErrorBoundary() {
