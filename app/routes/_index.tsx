@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { styled } from "styled-system/jsx";
+import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { selectCounterValue } from "~/store/counter/selectors";
 import { increment } from "~/store/counter/slice";
@@ -12,38 +13,31 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-const Header = styled("h1", {
-  base: {
-    color: "secondary",
-    backgroundColor: "primary",
-  },
-  variants: {
-    isError: {
-      true: {
-        color: "primary",
-      },
-    },
-    variant: {
-      error: {
-        color: "primary",
-        backgroundColor: "secondary",
-      },
-    },
-  },
-});
+const Header = styled.h1<{
+  $isError?: boolean;
+}>`
+  color: ${({ $isError }) => ($isError ? "red" : "blue")};
+`;
 
 export default function Index() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const count = useAppSelector(selectCounterValue);
+  const isError = count > 15;
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <Header variant="error" isError>
-        {t("HomePage.title")}
-      </Header>
+    <div>
+      <Header $isError={isError}>{t("HomePage.title")}</Header>
       <div>Count {count}</div>
       <button onClick={() => dispatch(increment())}>Increment</button>
+      <ul>
+        <li>
+          <Link to="/error">Error</Link>
+        </li>
+        <li>
+          <Link to="/404">404</Link>
+        </li>
+      </ul>
     </div>
   );
 }

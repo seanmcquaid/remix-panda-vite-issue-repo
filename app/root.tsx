@@ -6,27 +6,30 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./index.css";
 import "./i18n";
 import ReduxProvider from "./store/ReduxProvider";
+import { ThemeProvider } from "styled-components";
 
 export default function App() {
   return (
-      <html>
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <Meta />
-          <Links />
-        </head>
-        <body>
+    <html>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+        {typeof document === "undefined" ? "__STYLES__" : null}
+      </head>
+      <body>
+        <ThemeProvider theme={{}}>
           <ReduxProvider>
             <Outlet />
-            <ScrollRestoration />
-            <LiveReload />
-            <Scripts />
           </ReduxProvider>
-        </body>
-      </html>
+        </ThemeProvider>
+        <ScrollRestoration />
+        <LiveReload />
+        <Scripts />
+      </body>
+    </html>
   );
 }

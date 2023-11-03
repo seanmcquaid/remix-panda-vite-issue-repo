@@ -7,7 +7,6 @@ import postsApi from "./postsApi";
 
 const REDUX_STORE_VERSION = 1;
 
-
 const createNoopStorage = () => {
   return {
     getItem() {
@@ -24,9 +23,7 @@ const createNoopStorage = () => {
 
 const persistConfig = {
   key: "root",
-  storage: typeof window !== 'undefined'
-  ? storage
-  : createNoopStorage(),
+  storage: typeof window !== "undefined" ? storage : createNoopStorage(),
   // If you'd like to persist an entire reducer, you can include the name here
   whitelist: [counterSlice.name],
   // If you'd like to not save a specific reducer, you can include it here to blacklist it or just leave it out from the persist config
