@@ -26,6 +26,12 @@ dependencies:
   i18next-browser-languagedetector:
     specifier: ^7.1.0
     version: 7.1.0
+  i18next-fs-backend:
+    specifier: ^2.2.0
+    version: 2.2.0
+  i18next-http-backend:
+    specifier: ^2.3.1
+    version: 2.3.1
   isbot:
     specifier: ^3.6.8
     version: 3.7.0
@@ -47,6 +53,9 @@ dependencies:
   redux-persist:
     specifier: ^6.0.0
     version: 6.0.0(react@18.2.0)(redux@4.2.1)
+  remix-i18next:
+    specifier: ^5.4.0
+    version: 5.4.0(@remix-run/react@2.2.0)(@remix-run/server-runtime@2.2.0)(i18next@23.6.0)(react-i18next@13.3.1)(react@18.2.0)
   styled-components:
     specifier: ^6.1.0
     version: 6.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -2235,6 +2244,13 @@ packages:
     dependencies:
       event-target-shim: 5.0.1
 
+  /accept-language-parser@1.5.0:
+    resolution:
+      {
+        integrity: sha512-QhyTbMLYo0BBGg1aWbeMG4ekWtds/31BrEU+DONOg/7ax23vxpL03Pb7/zBmha2v7vdD3AyzZVWBVGEZxKOXWw==,
+      }
+    dev: false
+
   /accepts@1.3.8:
     resolution:
       {
@@ -3018,6 +3034,17 @@ packages:
         integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==,
       }
     dev: true
+
+  /cross-fetch@4.0.0:
+    resolution:
+      {
+        integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==,
+      }
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /cross-spawn@7.0.3:
     resolution:
@@ -4262,7 +4289,6 @@ packages:
       {
         integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==,
       }
-    dev: true
 
   /fast-glob@3.3.1:
     resolution:
@@ -4850,6 +4876,24 @@ packages:
       "@babel/runtime": 7.23.2
     dev: false
 
+  /i18next-fs-backend@2.2.0:
+    resolution:
+      {
+        integrity: sha512-VOPHhdDX0M/csRqEw+9Ectpf6wvTIg1MZDfAHxc3JKnAlJz7fcZSAKAeyDohOq0xuLx57esYpJopIvBaRb0Bag==,
+      }
+    dev: false
+
+  /i18next-http-backend@2.3.1:
+    resolution:
+      {
+        integrity: sha512-jnagFs5cnq4ryb+g92Hex4tB5kj3tWmiRWx8gHMCcE/PEgV1fjH5rC7xyJmPSgyb9r2xgcP8rvZxPKgsmvMqTw==,
+      }
+    dependencies:
+      cross-fetch: 4.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /i18next@23.6.0:
     resolution:
       {
@@ -4963,6 +5007,14 @@ packages:
       hasown: 2.0.0
       side-channel: 1.0.4
     dev: true
+
+  /intl-parse-accept-language@1.0.0:
+    resolution:
+      {
+        integrity: sha512-YFMSV91JNBOSjw1cOfw2tup6hDP7mkz+2AUV7W1L1AM6ntgI75qC1ZeFpjPGMrWp+upmBRTX2fJWQ8c7jsUWpA==,
+      }
+    engines: { node: ">=14" }
+    dev: false
 
   /ipaddr.js@1.9.1:
     resolution:
@@ -5673,7 +5725,6 @@ packages:
         integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==,
       }
     engines: { node: ">=12" }
-    dev: true
 
   /lz-string@1.5.0:
     resolution:
@@ -6510,7 +6561,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-releases@2.0.13:
     resolution:
@@ -7609,6 +7659,29 @@ packages:
       unified: 10.1.2
     dev: true
 
+  /remix-i18next@5.4.0(@remix-run/react@2.2.0)(@remix-run/server-runtime@2.2.0)(i18next@23.6.0)(react-i18next@13.3.1)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-4TGdkvSihr7X4qqpT31zleIyyRr3Z6MSu49t0zeZhFQrNqb6m7Ob/kVA5QfAl+jOa3Eow30bQ2fuOTBlQ07efA==,
+      }
+    peerDependencies:
+      "@remix-run/react": ^1.0.0 || ^2.0.0
+      "@remix-run/server-runtime": ^1.0.0 || ^2.0.0
+      i18next: ^23.1.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-i18next: ^13.0.0
+    dependencies:
+      "@remix-run/react": 2.2.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+      "@remix-run/server-runtime": 2.2.0(typescript@5.2.2)
+      accept-language-parser: 1.5.0
+      i18next: 23.6.0
+      intl-parse-accept-language: 1.0.0
+      lru-cache: 7.18.3
+      react: 18.2.0
+      react-i18next: 13.3.1(i18next@23.6.0)(react-dom@18.2.0)(react@18.2.0)
+      use-consistent-value: 1.0.0(react@18.2.0)
+    dev: false
+
   /require-like@0.1.2:
     resolution:
       {
@@ -8380,7 +8453,6 @@ packages:
       {
         integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==,
       }
-    dev: true
 
   /trim-lines@3.0.1:
     resolution:
@@ -8732,6 +8804,19 @@ packages:
       punycode: 2.3.1
     dev: true
 
+  /use-consistent-value@1.0.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-enIOysu0IwqjafsUXvhZPajB6UYjxwu8w38xWaHLfVs1onIyg2c0DwPgcknxqO0TpYpAHXdFDXOp7Cs9HbTIkw==,
+      }
+    engines: { node: ">=10" }
+    peerDependencies:
+      react: ">=16"
+    dependencies:
+      fast-deep-equal: 3.1.3
+      react: 18.2.0
+    dev: false
+
   /use-sync-external-store@1.2.0(react@18.2.0):
     resolution:
       {
@@ -8956,7 +9041,6 @@ packages:
       {
         integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==,
       }
-    dev: true
 
   /whatwg-url@5.0.0:
     resolution:
@@ -8966,7 +9050,6 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    dev: true
 
   /which-boxed-primitive@1.0.2:
     resolution:
