@@ -15,17 +15,17 @@ async function hydrate() {
     .use(Backend) // Setup your backend
     .init({
       ...config, // spread the configuration
-  // This function detects the namespaces your routes rendered while SSR use
-  ns: getInitialNamespaces(),
-  backend: { loadPath: "./locales/{{lng}}.ts" },
-  detection: {
-    // Here only enable htmlTag detection, we'll detect the language only
-    // server-side with remix-i18next, by using the `<html lang>` attribute
-    // we can communicate to the client the language detected server-side
-    order: ["htmlTag"],
-    // Because we only use htmlTag, there's no reason to cache the language
-    // on the browser, so we disable it
-    caches: [],
+      // This function detects the namespaces your routes rendered while SSR use
+      ns: getInitialNamespaces(),
+      backend: { loadPath: "./locales/{{lng}}.ts" },
+      detection: {
+        // Here only enable htmlTag detection, we'll detect the language only
+        // server-side with remix-i18next, by using the `<html lang>` attribute
+        // we can communicate to the client the language detected server-side
+        order: ["htmlTag"],
+        // Because we only use htmlTag, there's no reason to cache the language
+        // on the browser, so we disable it
+        caches: [],
       },
     });
 

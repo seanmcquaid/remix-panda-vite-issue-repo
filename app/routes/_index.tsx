@@ -1,11 +1,14 @@
-import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node";
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
+import { styled } from "styled-components";
 import i18next from "~/i18n/i18n.server";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { selectCounterValue } from "~/store/counter/selectors";
-import { increment } from "~/store/counter/slice";
+import { decrement, increment } from "~/store/counter/slice";
 
 export const meta: MetaFunction = () => {
   return [
@@ -28,7 +31,6 @@ const Header = styled.h1<{
 `;
 
 export default function Index() {
-  const { t } = useTranslation();
   const { title } = useLoaderData<typeof loader>();
   const dispatch = useAppDispatch();
   const count = useAppSelector(selectCounterValue);
@@ -36,9 +38,10 @@ export default function Index() {
 
   return (
     <div>
-      <Header $isError={isError}>{t("HomePage.title")}</Header>
+      <Header $isError={isError}>{title}</Header>
       <div>Count {count}</div>
       <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
       <ul>
         <li>
           <Link to="/error">Error</Link>

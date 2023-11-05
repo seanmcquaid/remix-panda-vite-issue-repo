@@ -2,9 +2,9 @@ import { InitOptions } from "i18next";
 import locales from "./locales";
 
 export default {
-  debug: true,
+  debug: false,
   fallbackLng: "en-US",
-  supportedLngs: ["en-US"],
+  supportedLngs: ["en-US", "en-CA"],
   load: "currentOnly",
   keySeparator: ".",
   saveMissing: true,

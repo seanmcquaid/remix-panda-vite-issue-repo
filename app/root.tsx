@@ -7,12 +7,10 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import "./i18n/i18n.client";
 import ReduxProvider from "./store/ReduxProvider";
 import { ThemeProvider } from "styled-components";
 import { LoaderFunctionArgs, json } from "@remix-run/node";
 import i18next from "./i18n/i18n.server";
-import { useTranslation } from "react-i18next";
 import { useChangeLanguage } from "remix-i18next";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -21,15 +19,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export default function App() {
-  // Get the locale from the loader
   const { locale } = useLoaderData<typeof loader>();
 
-  const { i18n } = useTranslation();
-
-  // This hook will change the i18n instance language to the current locale
-  // detected by the loader, this way, when we do something to change the
-  // language, this locale will change and i18next will load the correct
-  // translation files
   useChangeLanguage(locale);
 
   return (

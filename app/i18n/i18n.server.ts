@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { RemixI18Next } from "remix-i18next";
 import config from "./config"; // your i18n configuration file
 
-let i18next = new RemixI18Next({
+const i18next = new RemixI18Next({
   detection: {
     supportedLanguages: config.supportedLngs,
     fallbackLanguage: config.fallbackLng,

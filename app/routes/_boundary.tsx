@@ -4,7 +4,7 @@ import {
   isRouteErrorResponse,
   useRouteError,
 } from "@remix-run/react";
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 export default function Boundary() {
   return <Outlet />;
