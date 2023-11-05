@@ -18,6 +18,10 @@ export default async function handleRequest(
 ) {
   (globalThis as any).Request = request.constructor;
 
+  if(request.url.includes('.ca')){
+    request.headers.set('accept-language', 'en-CA')
+  }
+
   const instance = createInstance();
   const lng = await i18next.getLocale(request);
 
