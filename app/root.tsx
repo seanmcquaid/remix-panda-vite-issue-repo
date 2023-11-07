@@ -13,18 +13,17 @@ import { LoaderFunctionArgs, json } from "@remix-run/node";
 import i18next from "./i18n/i18n.server";
 import { useChangeLanguage } from "remix-i18next";
 import { useTranslation } from "react-i18next";
+import setAcceptLanguageHeaders from "./utils/setAcceptLanguageHeaders";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  if(request.url.includes('.ca')){
-    request.headers.set('accept-language', 'en-CA')
-  }
+  setAcceptLanguageHeaders(request);
   const locale = await i18next.getLocale(request);
   return json({ locale });
 }
 
 export default function App() {
   const { locale } = useLoaderData<typeof loader>();
-  let { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   useChangeLanguage(locale);
 

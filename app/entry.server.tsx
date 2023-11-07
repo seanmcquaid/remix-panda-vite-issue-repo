@@ -6,8 +6,9 @@ import { ServerStyleSheet } from "styled-components";
 import i18next from "./i18n/i18n.server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import Backend from "i18next-fs-backend";
-import config from "./i18n/config"; // your i18n configuration file
+import config from "./i18n/config";
 import { resolve } from "node:path";
+import setAcceptLanguageHeaders from "./utils/setAcceptLanguageHeaders";
 
 export default async function handleRequest(
   request: Request,
@@ -18,19 +19,17 @@ export default async function handleRequest(
 ) {
   (globalThis as any).Request = request.constructor;
 
-  if(request.url.includes('.ca')){
-    request.headers.set('accept-language', 'en-CA')
-  }
+  setAcceptLanguageHeaders(request);
 
   const instance = createInstance();
   const lng = await i18next.getLocale(request);
 
   await instance
-    .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend
+    .use(initReactI18next)
+    .use(Backend)
     .init({
-      ...config, // spread the configuration
-      lng, // The locale we detected above
+      ...config,
+      lng,
       backend: { loadPath: resolve("./app/locales/{{lng}}.ts") },
     });
 

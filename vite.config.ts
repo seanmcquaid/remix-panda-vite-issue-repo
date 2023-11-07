@@ -4,7 +4,13 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default ({ mode }: { mode: "development" | "production" }) => {
   return defineConfig({
-    plugins: [remix(), tsconfigPaths()],
+    plugins: [remix({
+      routes: (defineRoutes) => {
+        return Promise.resolve(defineRoutes((route) => {
+          route("/nested/exampler", "routes/nested.example/route.tsx"); 
+        }));
+      }
+    }), tsconfigPaths()],
     ssr: {
       noExternal:
         mode === "production"

@@ -2,7 +2,7 @@ import { InitOptions } from "i18next";
 import locales from "./locales";
 
 export default {
-  debug: false,
+  debug: true,
   fallbackLng: "en-US",
   supportedLngs: ["en-US", "en-CA"],
   load: "currentOnly",

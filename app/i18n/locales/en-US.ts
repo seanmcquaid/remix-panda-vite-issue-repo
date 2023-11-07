@@ -2,7 +2,7 @@
 
 const enUSLocale = {
   HomePage: {
-    title: "Remix Playground",
+    title: "Remix Playground US",
   },
 } as const;
 
